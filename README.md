@@ -147,7 +147,72 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+
+The core features of Node.js and Express and why they are useful.
+Node.js gave developers the chance to use JavaScript to write software that, up to that point, could only be written using C, C++, Java, Python, Ruby, C#, and the like.
+
+Some of the advantages of using Node.js for writing server-side code are:
+
+- Node.js uses the same programming language (JavaScript) and paradigm for both client and server. Therefore we can minimize context switching and share code between the client and the server.
+- JavaScript is single-threaded, which removes the complexity involved in handling multiple threads.
+- JavaScript is asynchronous, which allows us to take full advantage of the processor it's running on.
+- Using JavaScript gives us access to the npm repository. This repository is the largest ecosystem of valuable libraries (most free to use) in npm modules.
+
+Some of the disadvantages of using Node.js for writing server-side code are:
+
+- By strictly using JavaScript on the server, we cannot use the right tool (a particular language) for the job.
+-  JavaScript is single-threaded, we can't take advantage of servers with multiple cores/processors.
+- JavaScript is asynchronous, it is harder to learn.
+
+Node's built-in HTTP module provides a powerful way to build web applications and services. However, it requires a lot of code for everyday tasks like sending an HTML page to the browser.
+
+Express is just a Node.js module like any other module. Introducing Express is a light and unopinionated framework that sits on top of Node.js, which it easier to create web applications and services. 
+
+Some of the drawbacks of Express are:
+
+It's not a one-stop solution. Because of its simplicity, it does very little out of the box—especially when compared to frameworks like Ruby on Rails and Django.
+We are forced to make more decisions due to the flexibility and control it provides.
+
 1. Understand and explain the use of Middleware.
+A middleware is a function that will the receive the Request and Response objects, just like route handlers do. There are different types of middleware; for our purposes, we'll group them into three different categories:
+
+* Built-in middleware : It is included with Express but not added to the application automatically. Like the other types, we need to opt-in to using it in our application.
+
+* Third-party middleware: They are npm modules that we can install and then import into our applications using require()
+
+* Custom middleware: They are functions we write to perform specific tasks
+
+
 1. The basic principles of the REST architectural style.
+
+REST is a generally agreed-upon set of principles and constraints. They are recommendations, not a standard.
+
+When designing a RESTful Web API, keep the following principles in mind:
+
+* Everything is a resource.
+* Each resource is accessible via a unique URI.
+* Resources can have multiple representations.
+* Communication happens over a stateless protocol (HTTP).
+* Resource management happens via HTTP methods.
+* Applying the REST architecture to our APIs can make them scalable and simpler to maintain and extend.
+
+REST is a client-server architecture. The client and the server both have a different set of concerns. The server stores and/or manipulates information and makes it available to the user in an efficient manner. The client takes that information and displays it to the user and/or uses it to perform subsequent requests for information. This separation of concerns allows both the client and the server to evolve independently as it only requires that the interface stays the same.
+
+REST is stateless. That means the communication between the client and the server always contains all the information needed to perform the request.
+
+REST is cacheable. The client, the server and any intermediary components can all cache resources in order to improve performance.
+
+REST provides a uniform interface between components. This simplifies the architecture, as all components follow the same rules to speak to one another. It also makes it easier to understand the interactions between the different components of the system.
+
+REST is a layered system. Individual components cannot see beyond the immediate layer with which they are interacting. 
+
 1. Understand and explain the use of Express Routers.
+
+The express.Router() function is used to create a new router object. This function is used when you want to handle requests in your program .
+
 1. Describe tooling used to manually test the correctness of an API.
+
+Testing APIs is different from testing websites or web applications. A web browser is sufficient to test the latter, but we need to make POST/PUT/PATCH/DELETE requests for APIs and even modify the request headers.
+
+For testing, we will use a tool called Postman. Postman and other similar tools allow full control when making requests. For example, we can easily change the HTTP Method used, add JSON data to the body, add form data, add headers, examine the response, and more.
