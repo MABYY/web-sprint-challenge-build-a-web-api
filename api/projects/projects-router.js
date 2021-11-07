@@ -4,8 +4,6 @@ const router =require('express').Router();
 const Projects = require('./projects-model');
 const {
     validateProjectId
-    // validateUser,
-    // validatePost
 } = require('./projects-middleware')
 
 router.get('/', async (req, res,next) =>{
@@ -79,6 +77,8 @@ router.put('/:id', validateProjectId,async (req,res,next) => {
 
 router.post('/', async (req, res) =>{
     try{ 
+        // const {id, name, description, completed} = req.body
+        // if(!id || !name || !description || completed == true) {
         if(!req.body) {
             res.status(400).json({
                 message:"Please provide complete post",
