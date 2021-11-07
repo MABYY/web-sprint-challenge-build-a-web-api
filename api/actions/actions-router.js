@@ -53,15 +53,15 @@ router.get('/:id', validateActionId, async (req,res,next) => {
 
 router.post('/', async (req, res) =>{
     try{ 
-        // const {id, project_id, description, notes, completed} = req.body
-        // if(!id || !project_id || !description || !notes) {
-        if(!req.body) {
+        const {id, project_id, description, notes, completed} = req.body
+        if(!project_id || !description || !notes) {
+        // if(!req.body) {
             res.status(400).json({
                 message:"Please provide complete post",
             })
         } else {
             // Validate project_id
-            const {id,project_id,description,notes,completed} = req.body
+            // const {id,project_id,description,notes,completed} = req.body
             const project = await Projects.get(project_id)
             if (!project) { 
                 res.status(404).json({

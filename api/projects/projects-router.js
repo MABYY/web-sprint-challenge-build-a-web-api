@@ -77,9 +77,9 @@ router.put('/:id', validateProjectId,async (req,res,next) => {
 
 router.post('/', async (req, res) =>{
     try{ 
-        // const {id, name, description, completed} = req.body
-        // if(!id || !name || !description || completed == true) {
-        if(!req.body) {
+        const {id, name, description, completed} = req.body
+        if (!name || !description ) {
+        // if(!req.body) {
             res.status(400).json({
                 message:"Please provide complete post",
             })
