@@ -26,8 +26,6 @@ async function validateActionId (req,res,next) {
 }
 
   module.exports = {
-    // validatePo,
-    // validateUser,
     validateActionId,
     logger,
   }

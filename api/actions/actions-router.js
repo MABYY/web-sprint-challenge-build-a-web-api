@@ -1,11 +1,10 @@
 // Write your "actions" router here!
 const { restart } = require("nodemon");
 const router = require('express').Router();
+const Projects = require('../projects/projects-model');
 const Actions = require('./actions-model');
 const {
     validateActionId,
-    // validateUser,
-    // validatePost
 } = require('./actions-middlware')
 
 // router.get('/', (req, res) => {
@@ -59,8 +58,18 @@ router.post('/', async (req, res) =>{
                 message:"Please provide complete post",
             })
         } else {
-            const makePost = await Actions.insert(req.body);
-            res.status(201).json(makePost)
+            // Validate project_id
+            const {id,project_id,description,notes,completed} = req.body
+            const project = await Projects.get(project_id)
+            if (!project) { 
+                res.status(404).json({
+                    message: "The project does not exist",
+                })
+                 } else {
+                    const makePost = await Actions.insert(req.body);
+                    res.status(201).json(makePost)
+                 }
+
         }  
     } catch(next) {
         // res.status(500).json({
